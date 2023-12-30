@@ -1,6 +1,6 @@
 import { style } from '@vanilla-extract/css';
 
-export const body = style({
+export const appContainer = style({
   fontFamily: 'Arial, sans-serif',
   maxWidth: '800px',
   margin: '0 auto',
@@ -31,7 +31,7 @@ export const inputContainer = style({
 });
 
 export const inputStyle = style({
-  padding: '16px',
+  padding: '14px',
   marginRight: '16px',
   flex: '1',
   border: '1px solid #ddd',
@@ -45,7 +45,7 @@ export const inputStyle = style({
 });
 
 export const btnAdd = style({
-  padding: '16px',
+  padding: '14px',
   backgroundColor: '#4caf50',
   color: 'white',
   border: 'none',
@@ -62,8 +62,8 @@ export const btnAdd = style({
   },
 });
 
-export const blockTasks = style({
-  marginBottom: '20px',
+export const sortOrder = style({
+  cursor: 'pointer',
 });
 
 export const listTask = style({
@@ -83,7 +83,6 @@ export const allTask = style({
   gap: '12px',
   fontSize: '24px',
   color: '#333',
-  marginBottom: '12px',
 });
 
 export const taskName = style({
@@ -109,28 +108,14 @@ export const task = style({
   },
 });
 
-export const btnDelete = style({
-  backgroundColor: '#f44336',
-  color: 'white',
-  border: 'none',
-  padding: '12px',
-  borderRadius: '6px',
-  cursor: 'pointer',
-  fontSize: '16px',
-  transition: 'background-color 0.3s',
-  ':hover': {
-    backgroundColor: '#d32f2f',
-  },
-});
-
 export const allClear = style({
-  padding: '16px',
+  padding: '14px',
   backgroundColor: '#f44336',
   color: 'white',
   border: 'none',
   borderRadius: '8px',
   cursor: 'pointer',
-  fontSize: '18px',
+  fontSize: '16px',
   transition: 'background-color 0.3s',
   ':hover': {
     backgroundColor: '#d32f2f',

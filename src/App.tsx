@@ -1,6 +1,6 @@
 import { FC } from 'react';
 import useTaskStore from './taskStore';
-import * as style from './styles/styles.css';
+import * as styles from './styles/styles.css';
 import { useAutoAnimate } from '@formkit/auto-animate/react';
 
 import { MdEdit } from 'react-icons/md';
@@ -33,56 +33,56 @@ const App: FC = () => {
       return b.localeCompare(a);
     }
   });
+
   return (
-    <div className={style.body}>
-      <div className={style.header}>
-        <div className={style.headerTitle}>
+    <div className={styles.appContainer}>
+      <div className={styles.header}>
+        <div className={styles.headerTitle}>
           <IoLogoJavascript />
           Список задач
         </div>
-        <div className={style.inputContainer}>
+        <div className={styles.inputContainer}>
           <input
-            className={style.inputStyle}
+            className={styles.inputStyle}
             placeholder="Введите текст...."
             value={input}
             onChange={(event) => setInput(event.target.value)}
           />
-          <button className={style.btnAdd} disabled={!input} onClick={addTask}>
+          <button className={styles.btnAdd} disabled={!input} onClick={addTask}>
             +
           </button>
         </div>
       </div>
-
-      <div className={style.blockTasks}>
-        <h2 className={style.allTask}>
-          <span onClick={toggleSortOrder}>
+      <div>
+        <h2 className={styles.allTask}>
+          <span onClick={toggleSortOrder} className={styles.sortOrder}>
             {sortOrder === 'asc' ? <FaSortAlphaDown /> : <FaSortAlphaDownAlt />}
           </span>
           Все задачи:
         </h2>
-        <ul className={style.listTask} ref={parent}>
+        <ul className={styles.listTask} ref={parent}>
           {sortedTasks.map((task, index) => (
-            <li key={index} className={style.task}>
-              <div className={style.taskName} onClick={() => onChecked(index)}>
+            <li key={index} className={styles.task}>
+              <div className={styles.taskName} onClick={() => onChecked(index)}>
                 {checkedTasks.includes(index) ? <FaCheckCircle /> : <ImRadioUnchecked />}
                 {task}
               </div>
-              <div className={style.btnGroup}>
+              <div className={styles.btnGroup}>
                 <MdEdit style={{ cursor: 'pointer', width: '24px', height: '24px' }} />
                 <MdDelete
-                  onClick={() => onDelete(index)}
                   style={{ cursor: 'pointer', width: '24px', height: '24px' }}
+                  onClick={() => onDelete(index)}
                 />
               </div>
             </li>
           ))}
         </ul>
       </div>
-      <div className={style.btnGroupDelete}>
-        <button className={style.allClear} onClick={allClear}>
+      <div className={styles.btnGroupDelete}>
+        <button className={styles.allClear} onClick={allClear}>
           Очистить все
         </button>
-        <button className={style.allClear} onClick={onDeleteSelected}>
+        <button className={styles.allClear} onClick={onDeleteSelected}>
           Удалить выбранные
         </button>
       </div>
