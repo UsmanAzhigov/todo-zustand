@@ -28,4 +28,20 @@ describe('App Component', () => {
       throw error;
     }
   });
+  
+  test('should return the default object with empty values and mocked functions', () => {
+    const result = default();
+
+    expect(result.input).toBe('');
+    expect(result.tasks).toEqual([]);
+    expect(result.checkedTasks).toEqual([]);
+    expect(result.sortOrder).toBe('asc');
+    expect(result.setInput).toHaveBeenCalled();
+    expect(result.addTask).toHaveBeenCalled();
+    expect(result.allClear).toHaveBeenCalled();
+    expect(result.onDelete).toHaveBeenCalled();
+    expect(result.onDeleteSelected).toHaveBeenCalled();
+    expect(result.onChecked).toHaveBeenCalled();
+    expect(result.toggleSortOrder).toHaveBeenCalled();
+  });
 });
