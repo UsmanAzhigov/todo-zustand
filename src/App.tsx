@@ -1,7 +1,7 @@
-import React, { FC } from 'react';
+import { FC } from 'react';
+import useTaskStore from './taskStore';
 import * as style from './styles/styles.css';
 import { useAutoAnimate } from '@formkit/auto-animate/react';
-import useTaskStore from './taskStore';
 
 import { MdEdit } from 'react-icons/md';
 import { MdDelete } from 'react-icons/md';
@@ -55,15 +55,15 @@ const App: FC = () => {
 
       <div className={style.blockTasks}>
         <h2 className={style.allTask}>
-          Все задачи:
           <span onClick={toggleSortOrder}>
             {sortOrder === 'asc' ? <FaSortAlphaDown /> : <FaSortAlphaDownAlt />}
           </span>
+          Все задачи:
         </h2>
         <ul className={style.listTask} ref={parent}>
           {sortedTasks.map((task, index) => (
-            <li key={index} className={style.task} onClick={() => onChecked(index)}>
-              <div className={style.taskName}>
+            <li key={index} className={style.task}>
+              <div className={style.taskName} onClick={() => onChecked(index)}>
                 {checkedTasks.includes(index) ? <FaCheckCircle /> : <ImRadioUnchecked />}
                 {task}
               </div>
