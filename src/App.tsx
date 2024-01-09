@@ -9,6 +9,7 @@ import { ImRadioUnchecked } from 'react-icons/im';
 import { IoLogoJavascript } from 'react-icons/io5';
 import { FaCheckCircle, FaSortAlphaDown, FaSortAlphaDownAlt } from 'react-icons/fa';
 import useTaskStore from './store/taskStore';
+import { Button } from 'antd';
 
 const App: FC = () => {
   const {
@@ -80,12 +81,12 @@ const App: FC = () => {
         </ul>
       </div>
       <div className={styles.btnGroupDelete}>
-        <button className={styles.allClear} onClick={allClear}>
+        <Button type="primary" danger onClick={allClear}>
           Очистить все
-        </button>
-        <button className={styles.allClear} onClick={onDeleteSelected}>
-          Удалить выбранные
-        </button>
+        </Button>
+        <Button type="primary" danger onClick={onDeleteSelected}>
+          Удалить выбранное
+        </Button>
       </div>
     </div>
   );
