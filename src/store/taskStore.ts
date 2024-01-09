@@ -1,5 +1,5 @@
 import create from 'zustand';
-import { TaskStore } from './task.types';
+import { TaskStore } from '../types/task.types';
 
 const useTaskStore = create<TaskStore>((set) => ({
   input: '',
@@ -29,30 +29,32 @@ const useTaskStore = create<TaskStore>((set) => ({
 
   onDelete: (index) => {
     if (window.confirm('Вы действительно хотите удалить задачу?')) {
-      set((state) => ({
-        tasks: state.tasks.filter((_, i) => i !== index),
-        checkedTasks: state.checkedTasks.filter((taskIndex) => taskIndex !== index),
-      }));
+      set((state) => {
+        const updatedTasks = state.tasks.filter((_, i) => i !== index);
+        const updatedCheckedTasks = state.checkedTasks.filter((taskIndex) => taskIndex !== index);
+
+        return { tasks: updatedTasks, checkedTasks: updatedCheckedTasks };
+      });
     }
   },
 
   onDeleteSelected: () => {
     if (window.confirm('Вы действительно хотите удалить выбранные задачи?')) {
-      set((state) => ({
-        tasks: state.tasks.filter((_, index) => !state.checkedTasks.includes(index)),
-        checkedTasks: [],
-      }));
+      set((state) => {
+        const updatedTasks = state.tasks.filter((_, index) => !state.checkedTasks.includes(index));
+        const updatedCheckedTasks: any = [];
+        return { tasks: updatedTasks, checkedTasks: updatedCheckedTasks };
+      });
     }
   },
 
   onChecked: (index) => {
     set((state) => {
-      const isChecked = state.checkedTasks.includes(index);
-      const newCheckedTasks = isChecked
+      const isChecked = state.checkedTasks.includes(index)
         ? state.checkedTasks.filter((taskIndex) => taskIndex !== index)
         : [...state.checkedTasks, index];
 
-      return { checkedTasks: newCheckedTasks };
+      return { checkedTasks: isChecked };
     });
   },
 

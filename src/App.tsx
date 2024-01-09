@@ -1,5 +1,5 @@
 import { FC } from 'react';
-import useTaskStore from './taskStore';
+
 import * as styles from './styles/styles.css';
 import { useAutoAnimate } from '@formkit/auto-animate/react';
 
@@ -8,6 +8,7 @@ import { MdDelete } from 'react-icons/md';
 import { ImRadioUnchecked } from 'react-icons/im';
 import { IoLogoJavascript } from 'react-icons/io5';
 import { FaCheckCircle, FaSortAlphaDown, FaSortAlphaDownAlt } from 'react-icons/fa';
+import useTaskStore from './store/taskStore';
 
 const App: FC = () => {
   const {
